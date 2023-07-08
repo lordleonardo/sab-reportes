@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="/template/template.xhtml">
+        <ui:define name="contenido">
+
+            <h:form id="ConsolidadosCreateForm">
+                <p:growl id="growlu" showDetail="true" sticky="true" />  
+                <h3 class="page-header">Crear Consolidado </h3>
+                <div class="row" >
+                    <div class="col-lg-12" style="width: 980px;">
+                        <div class="panel-body">
+                            <div class="row" style="width: 980px;">
+                                <center>
+                                    <p:panelGrid id="pgConsolidado" columns="2" rendered="#{ultimoConsoliadoController.ultimoConsolidado != null}">
+                                        <p:outputLabel value="Consolidado anual " />
+                                        <p:selectOneMenu id="option" value="#{ultimoConsoliadoController.ultimoConsolidado.anio}">
+                                            <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                                            <f:selectItem itemLabel="2015" itemValue="2015"/>
+                                            <f:selectItem itemLabel="2016" itemValue="2016"/>
+                                            <f:selectItem itemLabel="2017" itemValue="2017"/>
+                                            <f:selectItem itemLabel="2018" itemValue="2018"/>
+                                            <f:selectItem itemLabel="2019" itemValue="2019"/>
+                                            <f:selectItem itemLabel="2020" itemValue="2020"/>
+                                            <f:selectItem itemLabel="2021" itemValue="2021"/>
+                                            <f:selectItem itemLabel="2022" itemValue="2022"/>
+                                            <f:selectItem itemLabel="2023" itemValue="2023"/>
+                                            <f:selectItem itemLabel="2024" itemValue="2024"/>
+                                            <f:selectItem itemLabel="2025" itemValue="2025"/>
+                                            <f:selectItem itemLabel="2026" itemValue="2026"/>
+                                            <f:selectItem itemLabel="2027" itemValue="2027"/>
+                                            <f:selectItem itemLabel="2028" itemValue="2028"/>
+                                            <f:selectItem itemLabel="2029" itemValue="2029"/>
+                                            <f:selectItem itemLabel="2030" itemValue="2030"/>
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                    <p:panelGrid  columns="2">
+                                        <p:commandButton class="btn btn-success"  value="Aceptar" actionListener="#{ultimoConsoliadoController.guardarUltimoConsolidado}" update="growlu,pgConsolidado"  >
+                                            <p:confirm header="Confirmar" message="¿Desea guardar el registro?,recuerde que esto altera el comportamiento de la precipitación promedio y máximo"  />
+                                        </p:commandButton>
+                                    </p:panelGrid>
+                                    <br></br>
+                                    <br></br>
+                                    <p:outputLabel></p:outputLabel> 
+                                    <div style="width: 950px;position: relative;left: 11px;" class="alert alert-success" align="center">Los Campos Marcados con * son obligatorios</div>
+
+                                </center>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <center>
+                                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </center>
+                                </p:confirmDialog>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+</html>

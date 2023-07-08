@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="/template/template.xhtml">
+        <ui:define name="contenido">
+            <h:form id="ConsolidadoListForm" >
+                <h3 class="page-header">Gestionar Valores Consolidados </h3>
+                <h5>   <p:commandButton id="createButton" class="btn btn-link" update="grow2"    value="Crear Consolidado " actionListener="#{ultimoConsoliadoController.abrirGuardarConsolidado()}"  />
+
+
+                </h5>
+                <div class="panel-body">
+                    <p:growl id="grow2" showDetail="true" sticky="true" /> 
+                    <div> </div>
+                    <p:dataTable id="datalist" value="#{ultimoConsoliadoController.listaUltimoConsolidado}" 
+                                 rowKey="#{item.idUltimoConsolidado}"
+                                 selection="#{ultimoConsoliadoController.ultimoConsolidado}"
+                                 var="item"  
+                                 emptyMessage="No hay registros"
+                                 editable="true"
+                                 >
+                        <p:column style="text-align: center;">
+                            <f:facet name="header">
+                                <h:outputText value="Último año consolidado"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anio}"/>
+                        </p:column>
+
+
+                    </p:dataTable>
+
+                </div>
+
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

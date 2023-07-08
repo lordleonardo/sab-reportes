@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="/template/template.xhtml">
+        <ui:define name="contenido">
+            <h:form id="NivelesListForm" >
+                <h3 class="page-header">Gestionar Valores de la estación #{nivelesController.estaciones.estacion}</h3>
+                <h5>   <p:commandButton id="createButton" class="btn btn-link" update="grow2"    value="Crear Valores " actionListener="#{nivelesController.abrirCrearValores(1)}"  />
+
+
+                </h5>
+                <div class="panel-body">
+                    <p:growl id="grow2" showDetail="true" sticky="true" /> 
+                    <div> </div>
+                    <p:dataTable id="datalist" value="#{nivelesController.listaNivelesvalores}" 
+                                 rowKey="#{item.cotasensor}"
+                                 selection="#{nivelesController.nivelesvalores}"
+                                 var="item"  
+                                 emptyMessage="No hay registros"
+                                 >
+                        <p:column style="display: none;">
+                            <f:facet name="header">
+                                <h:outputText value="Estacion"/>
+                            </f:facet>
+                            <h:outputText value="#{nivelesController.estaciones.estacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cota sensor"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cotasensor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cota cero"/>
+                            </f:facet>
+                            <h:outputText value="#{item.minsensor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cota del BM"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cotabm}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cota de desborde"/>
+                            </f:facet>
+                            <h:outputText value="#{item.niveldesbordamiento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Valor de referencia"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorreferencia}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Tipo de lectura"/>
+                            </f:facet>
+                            <h:outputText value="#{(item.idLectura==1)?'Nivel':'Distancia'}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Observación"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha "/>
+                            </f:facet>
+                            <h:outputText  value="#{item.fechaCreacion}" >
+                                <f:convertDateTime pattern="MM/dd/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+
+                    </p:dataTable>
+                    <h5 style="text-align: center">
+                        <h:commandLink id="excel">
+                            <p:graphicImage value="../img/excel1.png" width="92px" />
+                            <p:dataExporter type="xls" target="datalist" fileName="Estacion #{nivelesController.estaciones.estacion}" />
+                        </h:commandLink>
+                    </h5>
+                </div>
+
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

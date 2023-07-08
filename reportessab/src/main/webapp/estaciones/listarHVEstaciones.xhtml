@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="/template/template.xhtml">
+        <ui:define name="contenido">
+            <h:form id="EstacionesListForm" >
+                <h3 class="page-header">Gestionar Estaciones</h3>
+                 <h5>  
+                     <p:commandButton id="estacion" class="btn btn-link" update="grow2"  value="Ver Información" actionListener="#{estacionesHVController.getAbrirFormulario}"/>
+
+                </h5>
+                <div class="panel-body">
+                    <p:growl id="grow2" showDetail="true" sticky="true" /> 
+
+                    <p:dataTable var="item" value="#{estacionesHVController.listaEstaciones}"
+                                 paginator="true"
+                                 emptyMessage="No hay datos para la consulta"
+                                 selectionMode="single" 
+                                 selection="#{estacionesHVController.estaciones}"
+                                 rowKey="#{item.idestacion}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 widgetVar="itemTable" 
+                                 paginatorPosition="bottom"
+                                 filteredValue="#{estacionesHVController.listaEstaciones}"
+
+                                 >
+                        <p:ajax event="rowSelect"  />
+                        <p:ajax event="rowUnselect"/>
+                        <f:facet name="header">
+                            <p:outputPanel style="position: relative;left: -282px;">
+                                <h:outputText value="Buscar Todos  " />
+                                <p:inputText id="globalFilter" onkeyup="PF('itemTable').filter()" style="width: 302px;" placeholder="Ingrese búsqueda"/>
+                                <br></br>
+                                <br></br>
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <p:column filterBy="#{item.estacion}" filterStyle="display:none" style="width: 467px;">
+                            <f:facet name="header">
+                                <h:outputText value="Estación" />
+                            </f:facet>
+                            <h:outputText value="#{item.estacion}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.idtipotecnologia.tipotecnologia}"  filterStyle="display:none">
+                            <f:facet name="header">
+                                <h:outputText value="Tipo de tecnología"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtipotecnologia.tipotecnologia}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.idlocalidad.localidad}" filterStyle="display:none" style="width: 294px;">
+                            <f:facet name="header">
+                                <h:outputText value="Localidad"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idlocalidad.localidad}"/>
+                        </p:column>
+
+
+                    </p:dataTable>
+                </div>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

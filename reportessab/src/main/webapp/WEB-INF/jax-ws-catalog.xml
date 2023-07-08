@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://suga.sire.gov.co:8007/WSGeoreferenciador-WSGeoreferenciador-context-root/GeoreferenciarPort?WSDL" uri="wsdl/suga.sire.gov.co_8007/WSGeoreferenciador-WSGeoreferenciador-context-root/GeoreferenciarPort.wsdl"/>
+    <system systemId="http://suga.sire.gov.co:8007/WSGeoreferenciador-WSGeoreferenciador-context-root/GeoreferenciarPort?xsd=1" uri="wsdl/suga.sire.gov.co_8007/WSGeoreferenciador-WSGeoreferenciador-context-root/GeoreferenciarPort.xsd_1.xsd"/>
+</catalog>

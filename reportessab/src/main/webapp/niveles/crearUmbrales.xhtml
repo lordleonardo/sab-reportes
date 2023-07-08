@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="/template/template.xhtml">
+        <ui:define name="contenido">
+
+            <h:form id="UmbralesCreateForm">
+                <p:growl id="growlu" showDetail="true" sticky="true" />  
+                <h3 class="page-header">Crear umbrales de nivel</h3>
+                <div class="row" >
+                    <div class="col-lg-12" style="width: 980px;">
+                        <div class="panel-body">
+                            <div class="row" style="width: 980px;">
+                                <center>
+                                    <p:panelGrid  id="pgNiveles" columns="2">
+                                       
+                                  
+                                    <p:outputLabel value="Estación: " />
+                                        <p:selectOneMenu styleClass="ancho" id="idEstacion" value="#{nivelesController.idNivel}"  style="width:312px" > 
+                                            <f:selectItem itemLabel="Seleccionar..."  /> 
+                                            <f:selectItems  value="#{nivelesController.listaIdNivelUmbrales}" var="estacionItem"
+                                                            itemValue="#{estacionItem.idNiveles}" /> 
+                                        </p:selectOneMenu>
+
+                                        <p:outputLabel  value="Nivel Alto: "  for="nalto"/>
+                                        <p:spinner styleClass="ancho" stepFactor="0.01" min="0.00"   id="nalto" title="Nivel Alto" placeholder="Nivel Alto"  required="true" requiredMessage="Valor requerido" value="#{nivelesController.umbralesNiveles.nivelAlto}"  />  
+                                       
+                                        <p:outputLabel  value="Nivel Medio "  for="nmedio"/>
+                                        <p:spinner styleClass="ancho" stepFactor="0.01" min="0.00"   id="nmedio" title="Nivel Medio" placeholder="Nivel Medio"  required="true" requiredMessage="Valor requerido" value="#{nivelesController.umbralesNiveles.nivelMedio}"  />  
+                                       
+                                       
+                                        <p:outputLabel  value="Nivel Bajo "  for="nbajo"/>
+                                        <p:spinner styleClass="ancho" stepFactor="0.01" min="0.00"   id="nbajo" title="Nivel Bajo" placeholder="Nivel Bajo"  required="true" requiredMessage="Valor requerido" value="#{nivelesController.umbralesNiveles.nivelBajo}"  />  
+                                       
+                                        <h:outputText id="display" />
+
+
+                                    </p:panelGrid>
+                                    <p:panelGrid  columns="2">
+                                        <p:commandButton class="btn btn-success"  value="Aceptar" actionListener="#{nivelesController.guardarUmbralesNiveles()}" update="growlu,pgNiveles"  >
+                                            <p:confirm header="Confirmar" message="¿Desea guardar el registro,recuerde que esto altera las gráfica de Nivel ?"  />
+                                        </p:commandButton>
+                                    </p:panelGrid>
+                                    <br></br>
+                                    <br></br>
+                                    <p:outputLabel></p:outputLabel> 
+                                    <div style="width: 950px;position: relative;left: 11px;top:" class="alert alert-success" align="center">Los Campos Marcados con * son obligatorios</div>
+
+                                </center>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <center>
+                                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </center>
+                                </p:confirmDialog>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="/template/template.xhtml">
+        <ui:define name="contenido">
+
+            <h:form id="EstacionesHVCreateForm">
+                <p:growl id="growlu" showDetail="true" sticky="true" />  
+                <h3 class="page-header">Estación #{estacionesHVController.estaciones.estacion}</h3>
+
+                <div style="width: 500px;position: relative;right: -296px;">
+                    <table border="0px">
+                        <tr>
+                            <td colspan="3" align="center" style="background-color: #E7E6E6;"><h4>Meta dato de la estación</h4></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Nombre de la estación "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText disabled="true" id="estacion" style="width: 250px;" value="#{estacionesHVController.estacionesHV.estacion}"  />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Categoría de estación "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText disabled="true" id="categoria" style="width: 250px;" value="#{estacionesHVController.estacionesHV.tipo}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Código CNE de la estación "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText disabled="true" id="cne" style="width: 250px;" value="#{estacionesHVController.estacionesHV.codigoCNE}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Latitud"  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText  disabled="true" id="latitud" style="width: 250px;" value="#{estacionesHVController.estacionesHV.latitud}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Longitud "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText disabled="true" id="longitud" style="width: 250px;" value="#{estacionesHVController.estacionesHV.longitud}"  /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="center" style="background-color: #E7E6E6;"><h4>Información de localización</h4></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Departamento"  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText id="depto" style="width: 250px;" value="#{estacionesHVController.estacionesHV.depto}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Municipio"  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText id="municipio" style="width: 250px;" value="#{estacionesHVController.estacionesHV.ciudad}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Área operativa "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText id="area" style="width: 250px;" value="#{estacionesHVController.estacionesHV.area}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Localidad "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText id="localidad" disabled="true" style="width: 250px;" value="#{estacionesHVController.estacionesHV.localidad}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Escenario de riesgo que monitoreo "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputTextarea  style="width: 250px;"  value="#{estacionesHVController.estacionesHV.escenarioRiesgo}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Donde se monitorea "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputTextarea id="monitorea" style="width: 250px;"  value="#{estacionesHVController.estacionesHV.lugarMonitoreo}"  /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="center" style="background-color: #E7E6E6;"><h4>Información de transmisión</h4></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Estado "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText id="estado" style="width: 250px;" value="#{estacionesHVController.estacionesHV.estadoEstacion}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Tipo de monitoreo "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText id="tipom" style="width: 250px;" value="#{estacionesHVController.estacionesHV.tipoMonitoreo}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Tipo de transmisión "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText id="tipot" style="width: 250px;" value="#{estacionesHVController.estacionesHV.tipoTransmision}"  /></td>
+                        </tr>
+                        <tr>
+                            <td> <p:outputLabel  value="Tecnología "  /></td>
+                            <td>&nbsp;</td>
+                            <td> <p:inputText id="tecnologia" disabled="true" style="width: 250px;" value="#{estacionesHVController.estacionesHV.tipoTecnologia}"  /></td>
+                        </tr>
+
+                    </table>    
+                    <h:form id="formsen">
+                        <div align="center" style="background-color: #E7E6E6;"><h4>Información de series de datos</h4></div>
+                        <p:dataGrid var="sensores" value="#{estacionesHVController.listaSensoresInst}" columns="1"  rows="7" paginator="false" emptyMessage="No hay registros">
+                            <table border="0px">
+                                <tr>
+                                    <td colspan="3" align="center" style="background-color: #C6E0B4;"><h5>Sensor de #{(sensores.tipoSensor)==1?'Temperatura':(sensores.tipoSensor)==2?'Humedad':(sensores.tipoSensor)==3?'Nivel':(sensores.tipoSensor)==5?'Pluviometro':(sensores.tipoSensor)==8?'Velocidad del viento':(sensores.tipoSensor)==10?'Dirección del viento':(sensores.tipoSensor)==10?'Presión barométrica':'Cámara'}</h5></td>
+                                </tr>
+                                <tr>
+                                    <td> <p:outputLabel  value="Fecha de Instalación "  /></td>
+                                    <td>&nbsp;</td>
+                                    <td> <p:calendar value="#{sensores.fechaInstalacion}" id="fechainsl" navigator="true" maxdate="new Date();" locale="es" showOn="button" /></td>
+                                </tr>
+                                <tr>
+                                    <td> <p:outputLabel  value="Fecha de inicio de series de datos "  /></td>
+                                    <td>&nbsp;</td>
+                                    <td> <p:inputText style="width: 250px;" id="fechainis" value="#{sensores.fechaSerie}"  /></td>
+                                </tr>
+                                <tr>
+                                    <td> <p:outputLabel  value="Fecha de actualización de metadato "  /></td>
+                                    <td>&nbsp;</td>
+                                    <td> <p:calendar   id="fechaact" value="#{sensores.fechaMetaDatos}"  navigator="true" maxdate="new Date();" locale="es" showOn="button"/></td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td> &nbsp;</td>
+                                </tr>
+
+                            </table>  
+
+                        </p:dataGrid>
+
+                    </h:form>
+                    <h:form id="formman">
+                        <div align="center" style="background-color: #E7E6E6;"><h4>Información de Mantenimientos</h4></div>
+                        <table border="0px">
+                            <tr>
+                                <td> <p:outputLabel  value="Tipo de Mantenimiento "  /></td>
+                                <td>&nbsp;</td>
+                                <td>  
+                                    <select style="width: 250px;" id="idtipomantenimiento">
+                                        <option>Seleccionar...</option>
+                                        <option value="1">Preventivo</option>
+                                        <option value="2">Correctivo</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td> <p:outputLabel style="width: 245px;"  value="Descripción "  /></td>
+                                <td>&nbsp;</td>
+                                <td>  
+                                    <textarea id="iddescripcion" maxlength="600"  style="width: 250px;"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <p:outputLabel  value="Reporte del último mantenimiento "  /></td>
+                                <td>&nbsp;</td>
+                                <td> 
+                                    <input type="file" id="archivoPdf"  name="archivoPdf" onchange="validarDocumento('archivoPdf');" form="formDocumento"></input>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <p:outputLabel  value="Fecha del mantenimiento "  /></td>
+                                <td>&nbsp;</td>
+                                <td> 
+                                    <input type="date"  style="width:250px;" id="fechaIni"  navigator="true" maxdate="new Date();" locale="es" showOn="button" />
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p:commandLink value="Ver Mantenimientos" class="btn btn-link" type="button" onclick="PF('dlg1').show();" />
+                        <p:dialog header="Mantenimientos" widgetVar="dlg1" width="900" >
+                            <p:dataTable 
+                                var="item" value="#{estacionesHVController.listaMantenimientos}"
+                                paginator="true" emptyMessage="No hay registros"
+                                rows="10"
+                                rowsPerPageTemplate="10,20,30,40,50"
+                                paginatorPosition="bottom"
+                                >
+                                <p:column style="display: none;">
+                                    <f:facet name="header">
+                                        <h:outputText value="Ubicacion" />
+                                    </f:facet>
+                                    <input  id="ubicacion" value="#{item.ubicacion}"></input>
+                                </p:column>
+                                <p:column style="display: none;">
+                                    <f:facet name="header">
+                                        <h:outputText value="URL" />
+                                    </f:facet>
+                                    <input  id="url" value="#{item.url}"></input>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipo de Mantenimiento" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.idtipoMantenimiento==1?'Preventivo':'Correctivo'}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Histórico de mantenimientos" />
+                                    </f:facet>
+                                    <h:outputText id="fechainis" value="#{item.fechaInicio}" >
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Descripción" />
+                                    </f:facet>
+                                    <h:outputText id="descripcion" value="#{item.descripcion}"  />                                
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Archivo" />
+                                    </f:facet>
+                                    <a id="pruebadescarga" style="cursor: pointer;" onclick="descargardocumento(#{item.idMantenimiento})">Ver Documento</a>                               
+                                </p:column>
+                            </p:dataTable>
+                        </p:dialog>
+                    </h:form>
+                    <h:form id="formob">
+                        <div align="center" style="background-color: #E7E6E6;"><h4>Observaciones</h4></div>
+                        <table border="0px">
+                            <tr>
+                                <td> <p:outputLabel style="width: 230px;"  value="Observación "  /></td>
+                                <td>&nbsp;</td>
+                                <td>  <p:inputTextarea  style="width: 250px;"  value="#{estacionesHVController.observacionesstr}"  />
+                                </td>                            </tr>
+                        </table>
+                        <p:commandLink value="Ver Observaciones" class="btn btn-link" type="button" onclick="PF('dlg2').show();" />
+                        <p:dialog header="Observaciones" widgetVar="dlg2" width="900"  >
+                            <p:dataTable var="item" value="#{estacionesHVController.listaObservaciones}"
+                                         paginator="true" emptyMessage="No hay registros"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         paginatorPosition="bottom"
+                                         >
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Observaciones" />
+                                    </f:facet>
+                                    <h:outputText id="descripcion" value="#{item.observacion}"  />                                
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Fecha de Observación" />
+                                    </f:facet>
+                                    <h:outputText id="fechaObs" value="#{item.fecha}"  >  
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                        </p:dialog>
+                    </h:form>
+                </div>
+                <center>
+                    <p:panelGrid  columns="2">
+                        <p:commandButton class="btn btn-success"   value="Aceptar"   actionListener="#{estacionesHVController.guardarEstacionesCNE()}">
+                            <p:confirm header="Confirmar" message="¿Desea guardar el registro,recuerde que esto altera la información de las estaciones ?"  />
+                        </p:commandButton>
+                    </p:panelGrid>
+                    <br></br>
+                    <br></br>
+                    <p:outputLabel></p:outputLabel> 
+                    <div style="width: 950px;position: relative;left: 11px;" class="alert alert-success" align="center">Los Campos Marcados con * son obligatorios</div>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <center>
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" onclick="cargardocumento();" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </center>
+                    </p:confirmDialog>
+                </center>
+            </h:form>
+            <form id="formDocumento"  method="POST" enctype="multipart/form-data" action="/reportessab/CargarPDF">
+                <input type="hidden" id="fechaInic" name="fechaInic" value="" />
+                <input type="hidden" id="iddescripcionIn" name="iddescripcionIn" value=""/>
+                <input type="hidden" id="idtipomantenimientoIn" name="idtipomantenimientoIn" value=""/>
+                <input type="hidden" id="idestacioncne" name="idestacioncne" value="#{estacionesHVController.estacionesHV.idestacioncne}"/>
+                <input type="hidden" id="idusuario" name="idusuario" value="#{estacionesHVController.usu.documento.documento}"/>
+                <input type="submit" class="hidden" id="cargar" value="Pulsar"/>
+
+            </form>	
+        </ui:define>
+
+    </ui:composition>
+</html>

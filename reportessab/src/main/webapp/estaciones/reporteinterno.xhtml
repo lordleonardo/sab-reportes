@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="/template/template.xhtml">
+        <ui:define name="contenido">
+            <h:form id="formularioreportes" prependId="false">
+                 <h3 class="page-header">Gestionar Sensores</h3>
+                <center>
+                    <br></br>
+                    <br></br>
+
+                    <div class="row" style="width: 528px; height: 300px; " >
+                        <div class="col-lg-12" >
+                            <div class="row"  style="text-align: left;">
+                                <div class="col-lg-5">
+                                    <p:outputLabel  value="Seleccionar la estación : " />
+                                </div>
+                                <div class="col-lg-7">
+                                    <p:selectOneMenu id="idestaciones" value="#{estacionesController.estacion}" style="width:92%"  > 
+                                        <p:ajax listener="#{estacionesController.getListarSensoresInternos}" update="idsensores" />
+                                        <f:selectItem itemLabel="Seleccionar..."  /> 
+                                        <f:selectItems  value="#{estacionesController.listaEstacionesxTiposensor}" var="sensorItem"
+                                                        itemValue="#{estacionItem.idestacion}"/> 
+
+                                    </p:selectOneMenu>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="row"  style="text-align: left;">
+                                <div class="col-lg-5">
+                                    <p:outputLabel  value="Seleccionar el sensor : " />
+                                </div>
+                                <div class="col-lg-7">
+                                    <p:selectOneMenu id="idsensores" value="#{estacionesController.idSensorLectura}"  style="width:92%">
+                                        <p:ajax listener="#{estacionesController.getTipoReporte}"  />
+                                        <f:selectItem itemLabel="Seleccionar Sensor" itemValue=""  />
+                                        <f:selectItems value="#{estacionesController.listasensoresEstaciones}" var="sensoresItem"
+                                                       itemValue="#{sensoresItem.idSensor}"/> 
+                                    </p:selectOneMenu>
+                                </div>
+                            </div>
+                            &nbsp;
+
+                            &nbsp; 
+                            <div class="row" style="text-align: left;">
+                                <div class="col-lg-5">
+                                    <p:outputLabel value="Fecha Inicial: " />
+                                </div>
+                                <div class="col-lg-7">
+                                    <p:calendar rendered="#{estacionesController.boolFecha}" id="fechainicio"  navigator="true" maxdate="new Date();" value="#{estacionesController.fechainicial}" locale="es" showOn="button"   />
+                                    <p:calendar  rendered="#{estacionesController.boolFechaMes}" id="fechainicioMes" pattern="MM/yyyy"  navigator="true" maxdate="new Date();" value="#{estacionesController.fechainicialMes}" locale="es"  showOn="button" />
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="row"  style="text-align: left;" >
+                                <div class="col-lg-5">
+                                    <p:outputLabel value="Fecha Fin: "  />
+                                </div>
+                                <div class="col-lg-7">
+                                    <p:calendar   id="fechafinalMes" rendered="#{estacionesController.boolFechaMes}"  pattern="MM/yyyy"    navigator="true" maxdate="new Date();" value="#{estacionesController.fechafinalMes}" locale="es" showOn="button" mindate="#{estacionesController.fechainicial}" />
+                                    <p:calendar rendered="#{estacionesController.boolFecha}" id="fechafinal"  navigator="true" maxdate="new Date();" value="#{estacionesController.fechafinal}" locale="es" showOn="button"  mindate="#{estacionesController.fechainicial}" />
+                                </div>
+                            </div>
+                            <br></br>
+                            <br></br>
+
+                            <p:commandButton id="botonnumero"   ajax="false"   update="grow2,pgestaciones,pglecturas,pgestacionesNivel,pgestacionesacum,pgestacionesmes"  value="Descargar Excel" style="background-color: #3D682C;border-color: #5FA831;"    actionListener="#{estacionesController.getReportesxSensores()}" class="btn btn-info"/>
+                        </div>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <p:messages id="grow2" showDetail="true" closable="false" style="margin-right: 225px; margin-left: 218px;position: relative;top: -88px;" />
+                </center>
+            </h:form>
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
+                <p:graphicImage value="../img/cargando1.gif" />
+            </p:dialog> 
+        </ui:define>
+    </ui:composition>
+</html>

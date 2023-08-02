@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="/template/template.xhtml">
+        <ui:define name="contenido">
+            <h:form enctype="multipart/form-data">
+               <p:outputLabel value="Solo permite archivos XLS" styleClass="warning-label" />
+   
+                <p:fileUpload fileUploadListener="#{promediosMensualesController.handleFileUpload}" mode="advanced" 
+                              dragDropSupport="false" update="messages,tabs" style="text-align: center;" auto="true" label="Seleccionar archivo"/>
+                <p:growl id="messages" showDetail="true" sticky="true" /> 
+
+                <p:tabView dynamic="true" id="tabs">
+                    <p:tab title="Promedios">
+                        <p:dataTable value="#{promediosMensualesController.listaPromedios}" 
+                                     var="item" emptyMessage="No se han cargado archivos"
+                                     id="idListaPromedio"
+                                     paginator="true"
+                                     rowKey="#{item.idPromedioMensuales}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     paginatorPosition="bottom"
+                                     rendered="#{promediosMensualesController.promedio}"
+                                     >
+                            <p:column headerText="Estación">
+                                #{item.estacion}
+                            </p:column>
+                            <p:column headerText="Enero">
+                                #{item.enero} 
+                            </p:column>
+                            <p:column headerText="Febrero">
+                                #{item.febrero} 
+                            </p:column>
+                            <p:column headerText="Marzo">
+                                #{item.marzo} 
+                            </p:column>
+                            <p:column headerText="Abril">
+                                #{item.abril} 
+                            </p:column>
+                            <p:column headerText="Mayo">
+                                #{item.mayo} 
+                            </p:column>
+                            <p:column headerText="Junio">
+                                #{item.junio} 
+                            </p:column>
+                            <p:column headerText="Julio">
+                                #{item.julio} 
+                            </p:column>
+                            <p:column headerText="Agosto">
+                                #{item.agosto} 
+                            </p:column>
+                            <p:column headerText="Septiembre">
+                                #{item.septiembre} 
+                            </p:column>
+                            <p:column headerText="Octubre">
+                                #{item.octubre} 
+                            </p:column>
+                            <p:column headerText="Noviembre">
+                                #{item.noviembre} 
+                            </p:column>
+                            <p:column headerText="Diciembre">
+                                #{item.diciembre} 
+                            </p:column>
+                            <p:column headerText="Anual">
+                                #{item.anual} 
+                            </p:column>
+                            <p:column headerText="Periodo">
+                                #{item.periodoReferencia} 
+                            </p:column>
+                            <p:column headerText="Años Completos">
+                                #{item.nAnioCompletos} 
+                            </p:column>
+                            <p:column headerText="Observaciones">
+                                #{item.observaciones} 
+                            </p:column>
+                        </p:dataTable>
+                        <p:panel rendered="#{empty promediosMensualesController.listaPromedios}" style="text-align: center;">
+                            <p:outputLabel>No hay datos disponibles.</p:outputLabel>
+                        </p:panel>
+                   </p:tab>
+                    <p:tab title="Máximos">
+                            <p:dataTable value="#{promediosMensualesController.listaMaximos}" 
+                                         var="item" emptyMessage="No se han cargado archivos"
+                                         id="idListaMaximos"
+                                         paginator="true"
+                                         rowKey="#{item.idMaximosMensuales}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         paginatorPosition="bottom"
+                                         rendered="#{promediosMensualesController.maximo}"
+                                         >
+                                <p:column headerText="Estación">
+                                    #{item.estacion}
+                                </p:column>
+                                <p:column headerText="Enero">
+                                    #{item.enero} 
+                                </p:column>
+                                <p:column headerText="Febrero">
+                                    #{item.febrero} 
+                                </p:column>
+                                <p:column headerText="Marzo">
+                                    #{item.marzo} 
+                                </p:column>
+                                <p:column headerText="Abril">
+                                    #{item.abril} 
+                                </p:column>
+                                <p:column headerText="Mayo">
+                                    #{item.mayo} 
+                                </p:column>
+                                <p:column headerText="Junio">
+                                    #{item.junio} 
+                                </p:column>
+                                <p:column headerText="Julio">
+                                    #{item.julio} 
+                                </p:column>
+                                <p:column headerText="Agosto">
+                                    #{item.agosto} 
+                                </p:column>
+                                <p:column headerText="Septiembre">
+                                    #{item.septiembre} 
+                                </p:column>
+                                <p:column headerText="Octubre">
+                                    #{item.octubre} 
+                                </p:column>
+                                <p:column headerText="Noviembre">
+                                    #{item.noviembre} 
+                                </p:column>
+                                <p:column headerText="Diciembre">
+                                    #{item.diciembre} 
+                                </p:column>
+                                <p:column headerText="Anual">
+                                    #{item.anual} 
+                                </p:column>
+                            </p:dataTable>
+                            <p:panel rendered="#{empty promediosMensualesController.listaMaximos}" style="text-align: center;">
+                                <p:outputLabel>No hay datos disponibles.</p:outputLabel>
+                            </p:panel>
+                    </p:tab>
+
+                </p:tabView>        
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

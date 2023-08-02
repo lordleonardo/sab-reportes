@@ -186,10 +186,17 @@
                 #fechainsl_input,#fechainis,#fechaact{
                     width: 180%;
                 }
-                </style>
+                .warning-label {
+                    color: red;
+                    display: block;
+                    margin-bottom: 5px;
+                    text-align: center;
+                }
 
-            </h:head>
-            <h:body style="width: 980px; margin: 0 auto; font-family: sans-serif !important;">
+            </style>
+
+        </h:head>
+        <h:body style="width: 980px; margin: 0 auto; font-family: sans-serif !important;">
 
             <header>
                 <h:link outcome="/menu" value="">
@@ -208,14 +215,17 @@
                 <li class="active">
                     <li><h:link  outcome="/estaciones/listarEstaciones" value="Niveles "/></li>
                 </li>
-                <li class="active">
-                    <li><h:link  outcome="/lluvias/listarConsolidado" value="Lluvias "/></li>
-                </li>
+                <!--                <li class="active">
+                                    <li><h:link  outcome="/lluvias/listarConsolidado" value="Lluvias "/></li>
+                                </li>-->
                 <li class="active">
                     <li><h:link  outcome="/niveles/listarUmbrales" value="Umbrales de Ríos "/></li>
                 </li>
                 <li class="active">
                     <li><h:link  outcome="/estaciones/listarHVEstaciones" value="HV Estaciones"/></li>
+                </li>
+                <li class="active">
+                    <li><h:link  outcome="/promedios/promediosMaximos" value="Cargue Promedios y Máximos"/></li>
                 </li>
                 <li class="active">
                     <h:link outcome="/index" value="Salir"/>
@@ -230,15 +240,15 @@
 
                 </ui:insert> 
             </div>
-<!--            <footer id="footer" role="contentinfo" style="background-color:#3D682C; color:#fff; overflow:hidden;bottom: 0;position: fixed;width: 980px;">
-                <div class="container text-center" style="padding:5px; width:96.5%; margin:0;">
-                    <div class="row " style="margin:0; padding:0">
-                        <div class="copyright span10" style="margin:0; padding:0">
-                            <p>Copyright 2018. Todos los derechos reservados por IDIGER</p>
-                        </div>
-                    </div>
-                </div>
-            </footer>-->
+            <!--            <footer id="footer" role="contentinfo" style="background-color:#3D682C; color:#fff; overflow:hidden;bottom: 0;position: fixed;width: 980px;">
+                            <div class="container text-center" style="padding:5px; width:96.5%; margin:0;">
+                                <div class="row " style="margin:0; padding:0">
+                                    <div class="copyright span10" style="margin:0; padding:0">
+                                        <p>Copyright 2018. Todos los derechos reservados por IDIGER</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>-->
             <ui:include src="../sessionTimeOut.xhtml"/> 
         </h:body>
     </f:view>
